@@ -1,5 +1,5 @@
-// Your Script here.
-
+// Your code here.
+ 
 const lookup = {
   A: "N",
   B: "O",
@@ -30,27 +30,27 @@ const lookup = {
   "?": "?",
   ",": ",",
 };
-
-function rot13(str) {
+ 
+function rot13(encodedStr) {
+  const words = encodedStr.split(" "); // String to Array
   let decodedArr = []; // Your Result goes here
   // Only change code below this line
-	for(let i=0;i<str.length;i++){
-		if(lookup[str[i]]===undefined){
-			decodedArr.push(str[i]);
-		}
-		else{
-			decodedArr.push(lookup[str[i]]);
-		}
-		
-		
-	}
-
-  return decodedArr; //return decodedArr
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    let decoded_word = "";
+    for (let j = 0; j < word.length; j++) {
+      const char = word.charAt(j);
+      const decoded_char = lookup[char];
+      decoded_word += decoded_char;
+    }
+    decodedArr.push(decoded_word);
+  }
+  return decodedArr.join(" ");
 }
-
+ 
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
-
+ 
 // console.log(rot13("SERR YBIR? NPPVBWBO"));
-
-// Do not change this line
+ 
+// module.exports = rot13;
 window.rot13 = rot13;
